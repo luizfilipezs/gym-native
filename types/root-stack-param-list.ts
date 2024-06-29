@@ -1,11 +1,11 @@
 import { AppScreen } from "./app-screen";
 
 export type RootStackParamList = {
-  [AppScreen.TrainingList]: undefined;
-  [AppScreen.TrainingDetail]: {
+  [AppScreen.Home]: undefined;
+  [AppScreen.Training]: {
     index: number;
   };
-  [AppScreen.ExerciseDetail]: {
+  [AppScreen.Exercise]: {
     trainingIndex: number; 
     index: number;
   };

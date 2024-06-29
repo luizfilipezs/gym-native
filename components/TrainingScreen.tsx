@@ -5,19 +5,22 @@ import { FlatList, ScrollView, StyleSheet } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { AppScreen } from "../types/app-screen";
 import { ListItem } from "@react-native-material/core";
+import { useEffect } from "react";
 
 type TrainingScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.TrainingDetail>;
-  route: RouteProp<RootStackParamList, AppScreen.TrainingDetail>;
+  navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Training>;
+  route: RouteProp<RootStackParamList, AppScreen.Training>;
 };
 
 export default function TrainingScreen({ navigation, route }: TrainingScreenProps) {
   const { index } = route.params;
   const training = getTrainings()[index];
 
-  navigation.setOptions({
-    title: training.day,
-  });
+  useEffect(() => {
+    navigation.setOptions({
+      title: training.day,
+    });
+  }, []);
 
   return (
     <ScrollView>
@@ -26,7 +29,7 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
         renderItem={({ item, index: exerciseIndex }) => (
          <ListItem
             title={item.name}
-            onPress={() => navigation.navigate(AppScreen.ExerciseDetail, {
+            onPress={() => navigation.navigate(AppScreen.Exercise, {
               trainingIndex: index,
               index: exerciseIndex,
             })}

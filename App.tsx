@@ -11,9 +11,9 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName={AppScreen.TrainingList}>
+      <RootStack.Navigator initialRouteName={AppScreen.Home}>
         <RootStack.Screen
-          name={AppScreen.TrainingList}
+          name={AppScreen.Home}
           component={HomeScreen}
           options={{
             title: 'Treinos',
@@ -21,13 +21,13 @@ export default function App() {
           }}
         />
         <RootStack.Screen
-          name={AppScreen.TrainingDetail}
+          name={AppScreen.Training}
           component={TrainingScreen}
           options={{
             title: 'Treino',
           }} />
         <RootStack.Screen
-          name={AppScreen.ExerciseDetail}
+          name={AppScreen.Exercise}
           component={ExerciseScreen}
           options={{
             title: 'Exercício',

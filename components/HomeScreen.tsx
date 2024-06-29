@@ -6,7 +6,7 @@ import { AppScreen } from "../types/app-screen";
 import { Text } from "@react-native-material/core";
 
 type HomeScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.TrainingList>;
+  navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Home>;
 };
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
@@ -20,7 +20,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
         renderItem={({ item, index }) => (
           <Text
             style={styles.training}
-            onPress={() => navigation.navigate(AppScreen.TrainingDetail, { index })}
+            onPress={() => navigation.navigate(AppScreen.Training, { index })}
           >{item.day}</Text>
         )}
       />

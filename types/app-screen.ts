@@ -1,5 +1,5 @@
 export enum AppScreen {
-  TrainingList = 'TrainingList',
-  TrainingDetail = 'TrainingDetail',
-  ExerciseDetail = 'ExerciseDetail',
+  Home = 'Home',
+  Training = 'Training',
+  Exercise = 'Exercise',
 }
