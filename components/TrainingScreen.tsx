@@ -1,10 +1,10 @@
 import { RootStackParamList } from "../types/root-stack-param-list";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { getTrainings } from "../utils/getTrainings";
-import { FlatList, ScrollView, Text } from "react-native";
-import { GoBackButton } from "./GoBackButton";
+import { FlatList, ScrollView, StyleSheet } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { AppScreen } from "../types/app-screen";
+import { ListItem } from "@react-native-material/core";
 
 type TrainingScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.TrainingDetail>;
@@ -21,17 +21,16 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
 
   return (
     <ScrollView>
-      <GoBackButton navigation={navigation} />
-      <Text>{training.day}</Text>
       <FlatList
         data={training.exercices}
         renderItem={({ item, index: exerciseIndex }) => (
-          <Text
+         <ListItem
+            title={item.name}
             onPress={() => navigation.navigate(AppScreen.ExerciseDetail, {
               trainingIndex: index,
               index: exerciseIndex,
             })}
-          >{item.name}</Text>
+          />
         )}
       />
     </ScrollView>

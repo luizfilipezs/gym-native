@@ -1,8 +1,9 @@
-import { FlatList, ScrollView, StyleSheet, Text } from "react-native";
+import { FlatList, ScrollView, StyleSheet } from "react-native";
 import { getTrainings } from "../utils/getTrainings";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/root-stack-param-list";
 import { AppScreen } from "../types/app-screen";
+import { Text } from "@react-native-material/core";
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.TrainingList>;

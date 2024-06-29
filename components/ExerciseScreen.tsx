@@ -1,10 +1,11 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/root-stack-param-list";
-import { ScrollView, Text } from "react-native";
+import { Image, ScrollView, StyleSheet } from "react-native";
 import { getTrainings } from "../utils/getTrainings";
 import { GoBackButton } from "./GoBackButton";
 import { AppScreen } from "../types/app-screen";
 import { RouteProp } from "@react-navigation/native";
+import { Text } from "@react-native-material/core";
 
 type ExerciseScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.ExerciseDetail>;
@@ -22,12 +23,17 @@ export default function ExerciseScreen({ navigation, route }: ExerciseScreenProp
 
   return (
     <ScrollView>
-      <GoBackButton navigation={navigation} />
-      <Text>{exercise.name}</Text>
-      <Text>{exercise.image}</Text>
+      <Image source={{ uri: exercise.image }} style={styles.image}></Image>
       <Text>{exercise.description}</Text>
       <Text>{exercise.series}x{exercise.reps}</Text>
       <Text>{exercise.weight}kg</Text>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: 200,
+  },
+});

@@ -25,14 +25,12 @@ export default function App() {
           component={TrainingScreen}
           options={{
             title: 'Treino',
-            headerShown: false,
           }} />
         <RootStack.Screen
           name={AppScreen.ExerciseDetail}
           component={ExerciseScreen}
           options={{
             title: 'Exercício',
-            headerShown: false,
           }}
         />
       </RootStack.Navigator>
