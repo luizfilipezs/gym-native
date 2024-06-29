@@ -2,7 +2,6 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/root-stack-param-list";
 import { Image, ScrollView, StyleSheet } from "react-native";
 import { getTrainings } from "../utils/getTrainings";
-import { GoBackButton } from "./GoBackButton";
 import { AppScreen } from "../types/app-screen";
 import { RouteProp } from "@react-navigation/native";
 import { Text } from "@react-native-material/core";
