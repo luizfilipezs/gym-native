@@ -1,20 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { RootStackParamList } from './types/root-stack-param-list';
+import { AppScreen } from './types/app-screen';
+import ExerciseScreen from './components/ExerciseScreen';
+import TrainingScreen from './components/TrainingScreen';
+import HomeScreen from './components/HomeScreen';
+
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <RootStack.Navigator initialRouteName={AppScreen.TrainingList}>
+        <RootStack.Screen
+          name={AppScreen.TrainingList}
+          component={HomeScreen}
+          options={{
+            title: 'Treinos',
+            headerShown: false,
+          }}
+        />
+        <RootStack.Screen
+          name={AppScreen.TrainingDetail}
+          component={TrainingScreen}
+          options={{
+            title: 'Treino',
+            headerShown: false,
+          }} />
+        <RootStack.Screen
+          name={AppScreen.ExerciseDetail}
+          component={ExerciseScreen}
+          options={{
+            title: 'Exercício',
+            headerShown: false,
+          }}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
