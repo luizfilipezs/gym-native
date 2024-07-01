@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 15,
     backgroundColor: '#fff',
-    borderRadius: 15,
+    borderRadius: 5,
   },
   detail: {
     display: 'flex',
