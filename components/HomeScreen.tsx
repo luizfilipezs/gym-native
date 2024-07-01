@@ -11,6 +11,7 @@ type HomeScreenProps = {
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
   const trainings = getTrainings();
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.wrapper}>
