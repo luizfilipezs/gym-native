@@ -4,8 +4,8 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { getTrainings } from "../utils/getTrainings";
 import { AppScreen } from "../types/app-screen";
 import { RouteProp } from "@react-navigation/native";
-import { Text } from "@react-native-material/core";
 import { useEffect } from "react";
+import ExerciseDetail from "./ExerciseDetail";
 
 type ExerciseScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Exercise>;
@@ -27,18 +27,9 @@ export default function ExerciseScreen({ navigation, route }: ExerciseScreenProp
     <ScrollView>
       <Image source={{ uri: exercise.image }} style={styles.image}></Image>
       <View style={styles.detailsBox}>
-        <View style={styles.detail}>
-          <Text style={styles.detailName}>Descrição</Text>
-          <Text>{exercise.description}</Text>
-        </View>
-        <View style={styles.detail}>
-          <Text style={styles.detailName}>Séries</Text>
-          <Text>{exercise.series}x{exercise.reps}</Text>
-        </View>
-        <View style={styles.detail}>
-          <Text style={styles.detailName}>Peso atual</Text>
-          <Text>{exercise.weight}kg</Text>
-        </View>
+        <ExerciseDetail name="Descricão" value={exercise.description} />
+        <ExerciseDetail name="Séries" value={`${exercise.series}x${exercise.reps}`} />
+        <ExerciseDetail name="Peso" value={`${exercise.weight}kg`} />
       </View>
     </ScrollView>
   );
@@ -58,12 +49,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 5,
   },
-  detail: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  detailName: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  }
 });
