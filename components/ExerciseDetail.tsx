@@ -2,15 +2,15 @@ import { Text } from "@react-native-material/core";
 import { StyleSheet, View } from "react-native";
 
 interface ExerciseDetailProps {
-  name: string;
-  value: string;
+  label: string;
+  text: string;
 }
 
-export default function ExerciseDetail({ name, value }: ExerciseDetailProps) {
+export default function ExerciseDetail({ label, text }: ExerciseDetailProps) {
   return (
     <View style={styles.detail}>
-      <Text style={styles.detailName}>{name}</Text>
-      <Text>{value}</Text>
+      <Text style={styles.detailName}>{label}</Text>
+      <Text>{text}</Text>
     </View>
   );
 }

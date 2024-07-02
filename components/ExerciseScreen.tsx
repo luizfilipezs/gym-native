@@ -27,9 +27,9 @@ export default function ExerciseScreen({ navigation, route }: ExerciseScreenProp
     <ScrollView>
       <Image source={{ uri: exercise.image }} style={styles.image}></Image>
       <View style={styles.detailsBox}>
-        <ExerciseDetail name="Descricão" value={exercise.description} />
-        <ExerciseDetail name="Séries" value={`${exercise.series}x${exercise.reps}`} />
-        <ExerciseDetail name="Peso" value={`${exercise.weight}kg`} />
+        <ExerciseDetail label="Descricão" text={exercise.description} />
+        <ExerciseDetail label="Séries" text={`${exercise.series}x${exercise.reps}`} />
+        <ExerciseDetail label="Peso" text={`${exercise.weight}kg`} />
       </View>
     </ScrollView>
   );
