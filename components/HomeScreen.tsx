@@ -17,12 +17,12 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
       <ScrollView contentContainerStyle={styles.wrapper}>
         <Text variant="h4" style={styles.title}>Qual o treino de hoje? 💪</Text>
         <View style={styles.list}>
-          {trainings.map((training, index) => (
+          {trainings.map((training, trainingIndex) => (
             <Text
-              key={index}
+              key={trainingIndex}
               variant="h5"
               style={styles.listItem}
-              onPress={() => navigation.navigate(AppScreen.Training, { index })}
+              onPress={() => navigation.navigate(AppScreen.Training, { index: trainingIndex })}
             >{training.day}</Text>
           ))}
         </View>

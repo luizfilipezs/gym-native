@@ -13,8 +13,8 @@ type TrainingScreenProps = {
 };
 
 export default function TrainingScreen({ navigation, route }: TrainingScreenProps) {
-  const { index } = route.params;
-  const training = getTrainings()[index];
+  const { index: trainingIndex } = route.params;
+  const training = getTrainings()[trainingIndex];
 
   useEffect(() => {
     navigation.setOptions({
@@ -30,7 +30,7 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
          <ListItem
             title={item.name}
             onPress={() => navigation.navigate(AppScreen.Exercise, {
-              trainingIndex: index,
+              trainingIndex: trainingIndex,
               index: exerciseIndex,
             })}
           />
