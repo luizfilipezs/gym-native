@@ -1,6 +1,6 @@
 import { Training } from "../types/training";
 
-export function getTrainings(): Training[] {
+export const getTrainings = (): Training[] => {
   return [
     {
       day: 'Dia A',
@@ -37,4 +37,4 @@ export function getTrainings(): Training[] {
       exercices: [],
     },
   ];
-}
+};
