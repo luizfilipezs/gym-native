@@ -1,7 +1,7 @@
 import { RootStackParamList } from "../types/root-stack-param-list";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { getTrainings } from "../utils/getTrainings";
-import { FlatList, ListRenderItem, ScrollView } from "react-native";
+import { FlatList, ListRenderItem } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { AppScreen } from "../types/app-screen";
 import { ListItem } from "@react-native-material/core";
@@ -33,8 +33,6 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
   }, [navigation, trainingIndex]);
 
   return (
-    <ScrollView>
-      <FlatList data={training.exercices} renderItem={renderExercise} />
-    </ScrollView>
+    <FlatList data={training.exercices} renderItem={renderExercise} />
   );
 }
