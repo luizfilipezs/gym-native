@@ -1,11 +1,13 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/root-stack-param-list";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { getTrainings } from "../utils/getTrainings";
 import { AppScreen } from "../types/app-screen";
 import { RouteProp } from "@react-navigation/native";
 import { useEffect } from "react";
 import ExerciseDetail from "./ExerciseDetail";
+import { Div, Image } from "react-native-magnus";
+import { getFullWidth } from "../utils/getFullWidth";
 
 type ExerciseScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Exercise>;
@@ -25,28 +27,23 @@ export default function ExerciseScreen({ navigation, route }: ExerciseScreenProp
 
   return (
     <ScrollView>
-      <Image source={{ uri: exercise.image }} style={styles.image}></Image>
-      <View style={styles.detailsBox}>
+      <Image
+        h={200}
+        w={getFullWidth()}
+        source={{ uri: exercise.image }}
+      />
+      <Div
+        flexDir="column"
+        m={20}
+        p={15}
+        bg="#fff"
+        rounded="md"
+        style={{ gap: 10 }}
+      >
         <ExerciseDetail label="Descricão" text={exercise.description} />
         <ExerciseDetail label="Séries" text={`${exercise.series}x${exercise.reps}`} />
         <ExerciseDetail label="Peso" text={`${exercise.weight}kg`} />
-      </View>
+      </Div>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: '100%',
-    height: 200,
-  },
-  detailsBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 10,
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-  },
-});

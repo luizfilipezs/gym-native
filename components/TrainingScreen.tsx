@@ -1,12 +1,12 @@
 import { RootStackParamList } from "../types/root-stack-param-list";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { getTrainings } from "../utils/getTrainings";
-import { FlatList, ListRenderItem } from "react-native";
+import { FlatList, ListRenderItem, Pressable } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { AppScreen } from "../types/app-screen";
-import { ListItem } from "@react-native-material/core";
 import { useCallback, useEffect } from "react";
 import { Exercise } from "../types/exercise";
+import { Checkbox, Div, Text } from "react-native-magnus";
 
 type TrainingScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Training>;
@@ -30,18 +30,31 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
     };
 
     return (
-      <ListItem
-        title={item.name}
-        onPress={openExercise}
-      />
+      <Pressable onPress={openExercise}>
+        <Div
+          flexDir="row"
+          alignItems="center"
+          px={20}
+          py={15}
+          borderWidth={1}
+          borderColor="#f5f5f5"
+          bg="#fff"
+          style={{ gap: 10 }}
+        >
+          <Checkbox />
+          <Text>
+            {item.name}
+          </Text>
+        </Div>
+      </Pressable>
     );
   }, [navigation, trainingIndex]);
 
   return (
-    <FlatList 
-      data={exercises} 
-      renderItem={renderExercise} 
-      keyExtractor={(_, index) => index.toString()} 
+    <FlatList
+      data={exercises}
+      renderItem={renderExercise}
+      keyExtractor={(_, index) => index.toString()}
     />
   );
 }

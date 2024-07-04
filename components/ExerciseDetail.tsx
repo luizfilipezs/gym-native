@@ -1,5 +1,4 @@
-import { Text } from "@react-native-material/core";
-import { StyleSheet, View } from "react-native";
+import { Div, Text } from "react-native-magnus";
 
 interface ExerciseDetailProps {
   label: string;
@@ -8,20 +7,9 @@ interface ExerciseDetailProps {
 
 export default function ExerciseDetail({ label, text }: ExerciseDetailProps) {
   return (
-    <View style={styles.detail}>
-      <Text style={styles.detailName}>{label}</Text>
+    <Div>
+      <Text fontWeight="bold" mb={5}>{label}</Text>
       <Text>{text}</Text>
-    </View>
+    </Div>
   );
 }
-
-const styles = StyleSheet.create({
-  detail: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  detailName: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  }
-});
