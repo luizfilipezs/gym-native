@@ -1,6 +1,6 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/root-stack-param-list";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
 import { getTrainings } from "../utils/getTrainings";
 import { AppScreen } from "../types/app-screen";
 import { RouteProp } from "@react-navigation/native";

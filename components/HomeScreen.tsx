@@ -14,22 +14,11 @@ type HomeScreenProps = {
 export default function HomeScreen({ navigation }: HomeScreenProps) {
   const trainings = getTrainings();
 
-  const renderTraining = useCallback((training: Training, trainingIndex: number) => (
-    <Pressable
-      key={trainingIndex}
-      onPress={() => navigation.navigate(AppScreen.Training, { index: trainingIndex })}
-    >
-      <Div
-        bg="#f5f5f5"
-        px={35}
-        py={20}
-        rounded="lg"
-      >
-        <Text
-          fontSize="2xl"
-          textAlign="center"
-        >
-          {training.day}
+  const renderTraining = useCallback((item: Training, index: number) => (
+    <Pressable key={index} onPress={() => navigation.navigate(AppScreen.Training, { index })}>
+      <Div bg="#f5f5f5" px={35} py={20} rounded="lg">
+        <Text fontSize="2xl" textAlign="center">
+          {item.day}
         </Text>
       </Div>
     </Pressable>
@@ -38,15 +27,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
   return (
     <Div flex={1} bg="#fff">
       <ScrollView contentContainerStyle={styles.container}>
-        <Text
-          fontSize="6xl"
-          fontWeight="bold"
-          textAlign="center"
-          mb={35}
-        >
+        <Text fontSize="6xl" fontWeight="bold" textAlign="center" mb={35}>
           Qual o treino de hoje? 💪
         </Text>
-        <Div flexDir="column" style={{ gap: 15}}>
+        <Div flexDir="column" style={{ gap: 15 }}>
           {trainings.map(renderTraining)}
         </Div>
       </ScrollView>

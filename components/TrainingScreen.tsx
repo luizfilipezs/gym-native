@@ -30,7 +30,7 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
     };
 
     return (
-      <Pressable onPress={openExercise}>
+      <Pressable key={index} onPress={openExercise}>
         <Div
           flexDir="row"
           alignItems="center"
@@ -54,7 +54,6 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
     <FlatList
       data={exercises}
       renderItem={renderExercise}
-      keyExtractor={(_, index) => index.toString()}
     />
   );
 }
