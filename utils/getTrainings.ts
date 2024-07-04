@@ -5,7 +5,7 @@ export const getTrainings = (): Training[] => {
     {
       day: 'Dia A',
       description: 'Costas e bíceps',
-      exercices: [
+      exercises: [
         {
           name: 'Pulley frente/costas',
           description: 'Treino para a musculação das costas.',
@@ -29,12 +29,12 @@ export const getTrainings = (): Training[] => {
     {
       day: 'Dia B',
       description: 'Pernas',
-      exercices: [],
+      exercises: [],
     },
     {
       day: 'Dia C',
       description: 'Peito e tríceps',
-      exercices: [],
+      exercises: [],
     },
   ];
 };
