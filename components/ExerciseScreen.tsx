@@ -21,7 +21,7 @@ export default function ExerciseScreen({ navigation, route }: ExerciseScreenProp
     navigation.setOptions({
       title: exercise.name,
     });
-  }, []);
+  }, [navigation, exercise.name]);
 
   return (
     <ScrollView>

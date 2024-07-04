@@ -15,24 +15,33 @@ type TrainingScreenProps = {
 
 export default function TrainingScreen({ navigation, route }: TrainingScreenProps) {
   const { index: trainingIndex } = route.params;
-  const training = getTrainings()[trainingIndex];
+  const { day: trainingDay, exercises } = getTrainings()[trainingIndex];
 
   useEffect(() => {
-    navigation.setOptions({
-      title: training.day,
-    });
-  }, []);
+    navigation.setOptions({ title: trainingDay });
+  }, [navigation, trainingDay]);
 
   const renderExercise: ListRenderItem<Exercise> = useCallback(({ item, index }) => {
+    const openExercise = () => {
+      navigation.navigate(AppScreen.Exercise, {
+        trainingIndex,
+        index,
+      });
+    };
+
     return (
       <ListItem
         title={item.name}
-        onPress={() => navigation.navigate(AppScreen.Exercise, { trainingIndex, index })}
+        onPress={openExercise}
       />
     );
   }, [navigation, trainingIndex]);
 
   return (
-    <FlatList data={training.exercices} renderItem={renderExercise} />
+    <FlatList 
+      data={exercises} 
+      renderItem={renderExercise} 
+      keyExtractor={(_, index) => index.toString()} 
+    />
   );
 }
