@@ -15,7 +15,7 @@ type ExerciseScreenProps = {
 export default function ExerciseScreen({ navigation, route }: ExerciseScreenProps) {
   const { trainingIndex, index } = route.params;
   const training = getTrainings()[trainingIndex];
-  const exercise = training.exercices[index];
+  const exercise = training.exercises[index];
 
   useEffect(() => {
     navigation.setOptions({
