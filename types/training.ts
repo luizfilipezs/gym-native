@@ -1,7 +1,7 @@
 import { Exercise } from "./exercise";
 
 export interface Training {
-  day: string;
-  description: string;
+  name: string;
+  description: string | null;
   exercises: Exercise[];
 }

@@ -1,9 +1,12 @@
 import { Training } from "../types/training";
+import { delay } from "./delay";
 
-export const getTrainings = (): Training[] => {
+const fetchMockTrainings = async (): Promise<Training[]> => {
+  await delay(300);
+
   return [
     {
-      day: 'Dia A',
+      name: 'Dia A',
       description: 'Costas e bíceps',
       exercises: [
         {
@@ -13,6 +16,7 @@ export const getTrainings = (): Training[] => {
           video: 'https://www.youtube.com/shorts/wmG3Z7ekpVM',
           series: 3,
           reps: 10,
+          rest: 60,
           weight: 4,
         },
         {
@@ -22,19 +26,22 @@ export const getTrainings = (): Training[] => {
           video: 'https://www.youtube.com/watch?v=5uaUBHB9wYs',
           series: 3,
           reps: 12,
+          rest: 60,
           weight: 30,
-        }
+        },
       ],
     },
     {
-      day: 'Dia B',
+      name: 'Dia B',
       description: 'Pernas',
       exercises: [],
     },
     {
-      day: 'Dia C',
+      name: 'Dia C',
       description: 'Peito e tríceps',
       exercises: [],
     },
   ];
 };
+
+export const fetchTrainings = fetchMockTrainings;
