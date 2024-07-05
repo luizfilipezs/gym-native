@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
 import { Training } from "../types/training";
-import { fetchTrainings } from "./fetchTrainings";
+import { useFetchTrainings } from "./useFetchTrainings";
 
 export const useTrainings = () => {
-  const [loadingTrainings, setLoadingTrainings] = useState(true);
-  const [trainings, setTrainings] = useState<Training[]>([]);
+  const { loading, data } = useFetchTrainings<Training[]>((trainings) => trainings);
 
-  useEffect(() => {
-    fetchTrainings()
-      .then(setTrainings)
-      .finally(() => setLoadingTrainings(false));
-  }, []);
-
-  return { loadingTrainings, trainings };
+  return {
+    loadingTrainings: loading,
+    trainings: data,
+  };
 };

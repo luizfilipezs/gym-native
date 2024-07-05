@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { fetchTrainings } from "./fetchTrainings";
 import { Exercise } from "../types/exercise";
+import { useFetchTrainings } from "./useFetchTrainings";
 
 interface UseExerciseParams {
   trainingIndex: number;
@@ -8,14 +7,10 @@ interface UseExerciseParams {
 }
 
 export const useExercise = ({ trainingIndex, exerciseIndex }: UseExerciseParams) => {
-  const [loadingExercise, setLoadingExercise] = useState(true);
-  const [exercise, setExercise] = useState<Exercise | null>(null);
+  const { loading, data } = useFetchTrainings<Exercise>((trainings) => trainings[trainingIndex]?.exercises[exerciseIndex]);
 
-  useEffect(() => {
-    fetchTrainings()
-      .then((trainings) => setExercise(trainings[trainingIndex].exercises[exerciseIndex]))
-      .finally(() => setLoadingExercise(false));
-  }, []);
-
-  return { loadingExercise, exercise };
+  return {
+    loadingExercise: loading,
+    exercise: data,
+  };
 };

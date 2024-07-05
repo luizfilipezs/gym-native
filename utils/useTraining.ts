@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
 import { Training } from "../types/training";
-import { fetchTrainings } from "./fetchTrainings";
+import { useFetchTrainings } from "./useFetchTrainings";
 
 export const useTraining = (index: number) => {
-  const [loadingTraining, setLoadingTraining] = useState(true);
-  const [training, setTraining] = useState<Training | null>(null);
+  const { loading, data } = useFetchTrainings<Training>((trainings) => trainings[index]);
 
-  useEffect(() => {
-    fetchTrainings()
-      .then((trainings) => setTraining(trainings[index]))
-      .finally(() => setLoadingTraining(false));
-  }, []);
-
-  return { loadingTraining, training };
+  return {
+    loadingTraining: loading,
+    training: data,
+  };
 };

@@ -2,12 +2,13 @@ import { ScrollView, StyleSheet } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types/root-stack-param-list";
 import { AppScreen } from "../types/app-screen";
-import { Div, Text } from "react-native-magnus";
+import { Button, Div, Text } from "react-native-magnus";
 import { useCallback } from "react";
 import { Training } from "../types/training";
 import Loading from "./Loading";
 import { useTrainings } from "../utils/useTrainings";
 import TrainingListItem from "./TrainingListItem";
+import Wrapper from "./Wrapper";
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Home>;
@@ -32,8 +33,26 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     );
   }
 
+  if (!trainings) {
+    return (
+      <Wrapper>
+        <Button
+          mt="lg"
+          ml="lg"
+          px="xl"
+          py="lg"
+          bg="blue500"
+          color="white"
+          underlayColor="blue600"
+        >
+          Cadastrar treino
+        </Button>
+      </Wrapper>
+    );
+  }
+
   return (
-    <Div flex={1} bg="white">
+    <Wrapper>
       <ScrollView contentContainerStyle={styles.container}>
         <Text fontSize="6xl" fontWeight="bold" textAlign="center" mb={35}>
           Qual o treino de hoje? 💪
@@ -42,7 +61,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           {trainings.map(renderTrainingListItem)}
         </Div>
       </ScrollView>
-    </Div>
+    </Wrapper>
   );
 }
 

@@ -8,6 +8,7 @@ import { Exercise } from "../types/exercise";
 import { Checkbox, Div, Text } from "react-native-magnus";
 import Loading from "./Loading";
 import { useTraining } from "../utils/useTraining";
+import ErrorAction from "./ErrorAction";
 
 type TrainingScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, AppScreen.Training>;
@@ -59,9 +60,18 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
     );
   }
 
+  if (!training) {
+    return (
+      <ErrorAction
+        actionText="Voltar"
+        action={() => navigation.goBack()}
+      />
+    )
+  }
+
   return (
     <FlatList
-      data={training!.exercises}
+      data={training.exercises}
       renderItem={renderExerciseListItem}
     />
   );
