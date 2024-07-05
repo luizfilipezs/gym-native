@@ -7,7 +7,9 @@ interface UseExerciseParams {
 }
 
 export const useExercise = ({ trainingIndex, exerciseIndex }: UseExerciseParams) => {
-  const { loading, data } = useFetchTrainings<Exercise>((trainings) => trainings[trainingIndex]?.exercises[exerciseIndex]);
+  const { loading, data } = useFetchTrainings<Exercise>(
+    (trainings) => trainings[trainingIndex]?.exercises[exerciseIndex]
+  );
 
   return {
     loadingExercise: loading,
