@@ -17,7 +17,7 @@ type TrainingScreenProps = {
 
 export default function TrainingScreen({ navigation, route }: TrainingScreenProps) {
   const { index: trainingIndex } = route.params;
-  const { loadingTraining, training } = useTraining(trainingIndex);
+  const { loading, training } = useTraining(trainingIndex);
 
   const renderExerciseListItem: ListRenderItem<Exercise> = useCallback(({ item, index }) => {
     const openExercise = () => {
@@ -54,7 +54,7 @@ export default function TrainingScreen({ navigation, route }: TrainingScreenProp
     }
   }, [navigation, training]);
 
-  if (loadingTraining) {
+  if (loading) {
     return (
       <Loading />
     );

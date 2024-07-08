@@ -19,7 +19,7 @@ type ExerciseScreenProps = {
 
 export default function ExerciseScreen({ navigation, route }: ExerciseScreenProps) {
   const { trainingIndex, index } = route.params;
-  const { loadingExercise, exercise } = useExercise({ trainingIndex, exerciseIndex: index });
+  const { loading, exercise } = useExercise({ trainingIndex, exerciseIndex: index });
 
   useEffect(() => {
     if (exercise) {
@@ -27,7 +27,7 @@ export default function ExerciseScreen({ navigation, route }: ExerciseScreenProp
     }
   }, [navigation, exercise]);
 
-  if (loadingExercise) {
+  if (loading) {
     return (
       <Loading />
     );

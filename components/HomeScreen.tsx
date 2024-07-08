@@ -15,7 +15,7 @@ type HomeScreenProps = {
 };
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
-  const { loadingTrainings, trainings } = useTrainings();
+  const { loading, trainings } = useTrainings();
 
   const renderTrainingListItem = useCallback((item: Training, index: number) => (
     <TrainingListItem
@@ -27,7 +27,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     />
   ), [navigation]);
 
-  if (loadingTrainings) {
+  if (loading) {
     return (
       <Loading />
     );

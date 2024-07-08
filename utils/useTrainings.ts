@@ -1,11 +1,17 @@
 import { Training } from "../types/training";
 import { useFetchTrainings } from "./useFetchTrainings";
 
-export const useTrainings = () => {
-  const { loading, data } = useFetchTrainings<Training[]>((trainings) => trainings);
+interface UseTrainings {
+  trainings: Training[] | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export const useTrainings = (): UseTrainings => {
+  const { data: trainings, ...rest } = useFetchTrainings<Training[]>((trainings) => trainings);
 
   return {
-    loadingTrainings: loading,
-    trainings: data,
-  };
+    ...rest,
+    trainings,
+  }
 };

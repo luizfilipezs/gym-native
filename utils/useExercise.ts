@@ -6,13 +6,19 @@ interface UseExerciseParams {
   exerciseIndex: number;
 }
 
-export const useExercise = ({ trainingIndex, exerciseIndex }: UseExerciseParams) => {
-  const { loading, data } = useFetchTrainings<Exercise>(
+interface UseExercise {
+  exercise: Exercise | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export const useExercise = ({ trainingIndex, exerciseIndex }: UseExerciseParams): UseExercise => {
+  const { data: exercise, ...rest } = useFetchTrainings<Exercise>(
     (trainings) => trainings[trainingIndex]?.exercises[exerciseIndex]
   );
 
   return {
-    loadingExercise: loading,
-    exercise: data,
+    ...rest,
+    exercise,
   };
 };
